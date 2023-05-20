@@ -18,6 +18,8 @@ class CHAPTER_UNREAL_API AMyGameModeBase : public AGameModeBase
 public:
 	virtual void BeginPlay() override;
 
+	
+
 	UPROPERTY()
 		AMyFirstActor* SpawnActor;
 

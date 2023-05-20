@@ -8,6 +8,8 @@
 #include "MyGameModeBase.h"
 #include "MyFirstActor.h"
 
+
+
 void AMyGameModeBase::BeginPlay() {
 	Super::BeginPlay();
 
