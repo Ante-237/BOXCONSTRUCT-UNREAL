@@ -23,4 +23,25 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY()
+		UStaticMeshComponent* BuildingMesh;
+
+	UPROPERTY()
+		UParticleSystemComponent* SpawnPoint;
+
+	UPROPERTY()
+		UClass* UnitToSpawn;
+
+	UPROPERTY()
+		float SpawnInterval;
+
+	UFUNCTION()
+		void SpawnUnit();
+
+	UFUNCTION()
+		void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	UPROPERTY()
+		FTimerHandle SpawnTimerHandle;
+
 };
