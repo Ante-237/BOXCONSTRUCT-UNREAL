@@ -9,6 +9,9 @@
 /**
  * 
  */
+DECLARE_DELEGATE(FStandardDelegateSignature)
+DECLARE_DELEGATE_OneParam(FParamDelegateSignature, FLinearColor);
+DECLARE_MULTICAST_DELEGATE(FMulticastDelegateSignature)
 UCLASS()
 class CHAPTER_UNREAL_API AChapter_UNREALGameModeBase : public AGameModeBase
 {
@@ -16,5 +19,11 @@ class CHAPTER_UNREAL_API AChapter_UNREALGameModeBase : public AGameModeBase
 
 public:
 	void BeginPlay();
+
+	FStandardDelegateSignature MyStandardDelegate;
+
+	FParamDelegateSignature MyParamaterDelegate;
+
+	FMulticastDelegateSignature MyMulticastDelegate;
 	
 };

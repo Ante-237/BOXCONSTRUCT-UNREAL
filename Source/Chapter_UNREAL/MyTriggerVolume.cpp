@@ -2,6 +2,8 @@
 
 
 #include "MyTriggerVolume.h"
+#include "Chapter_UNREALGameModeBase.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AMyTriggerVolume::AMyTriggerVolume()
@@ -17,6 +19,26 @@ void AMyTriggerVolume::NotifyActorBeginOverlap(AActor* OtherActor) {
 	auto Message = FString::Printf(TEXT("%s entered me"), *(OtherActor->GetName()));
 
 	GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, Message);
+
+
+	UWorld* TheWorld = GetWorld();
+
+	if (TheWorld != nullptr) {
+		AGameModeBase* GameMode = UGameplayStatics::GetGameMode(TheWorld);
+
+		AChapter_UNREALGameModeBase* MyGameMode = Cast<AChapter_UNREALGameModeBase>(GameMode);
+
+		if (MyGameMode != nullptr) {
+			MyGameMode->MyStandardDelegate.ExecuteIfBound();
+
+			auto Color = FLinearColor(1, 0, 0, 1);
+			MyGameMode->MyParamaterDelegate.ExecuteIfBound(Color);
+
+			MyGameMode->MyMulticastDelegate.Broadcast();
+		}
+
+
+	}
 }
 
 void AMyTriggerVolume::NotifyActorEndOverlap(AActor* OtherActor) {
