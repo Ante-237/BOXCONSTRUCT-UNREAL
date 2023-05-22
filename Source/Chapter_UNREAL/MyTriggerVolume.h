@@ -7,6 +7,7 @@
 #include "Components/BoxComponent.h"
 #include "MyTriggerVolume.generated.h"
 
+DECLARE_EVENT(AMyTriggerVolume, FPlayerEntered)
 UCLASS()
 class CHAPTER_UNREAL_API AMyTriggerVolume : public AActor
 {
@@ -24,6 +25,8 @@ public:
 
 	UFUNCTION()
 		virtual void NotifyActorEndOverlap(AActor* OtherActor) override;
+
+	FPlayerEntered onPlayerEntered;
 
 
 };

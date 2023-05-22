@@ -35,6 +35,8 @@ void AMyTriggerVolume::NotifyActorBeginOverlap(AActor* OtherActor) {
 			MyGameMode->MyParamaterDelegate.ExecuteIfBound(Color);
 
 			MyGameMode->MyMulticastDelegate.Broadcast();
+
+			onPlayerEntered.Broadcast();
 		}
 
 
