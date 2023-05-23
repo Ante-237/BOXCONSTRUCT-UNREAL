@@ -51,6 +51,7 @@ void AMyWarrior::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	PlayerInputComponent->BindAxis("Back", this, &AMyWarrior::Back);
 	PlayerInputComponent->BindAxis("Right", this, &AMyWarrior::Right);
 	PlayerInputComponent->BindAxis("Left", this, &AMyWarrior::Left);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AMyWarrior::Jump);
 
 }
 
