@@ -2,6 +2,7 @@
 
 
 #include "Chapter_UNREALGameModeBase.h"
+#include "Blueprint/UserWidget.h"
 
 void AChapter_UNREALGameModeBase::BeginPlay() {
 	Super::BeginPlay();
@@ -16,4 +17,15 @@ void AChapter_UNREALGameModeBase::BeginPlay() {
 	FString fstringVar = "an fstring variable";
 
 	UE_LOG(LogTemp, Warning, TEXT("Text, %d, %f %s"), intVar, floatVar, *fstringVar);
+
+	if (Widget) {
+		UUserWidget* Menu = CreateWidget<UUserWidget>(GetWorld(), Widget);
+
+		if (Menu) {
+			Menu->AddToViewport();
+			GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
+		}
+	}
+
+
 }

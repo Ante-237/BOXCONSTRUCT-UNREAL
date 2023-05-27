@@ -25,5 +25,13 @@ public:
 	FParamDelegateSignature MyParamaterDelegate;
 
 	FMulticastDelegateSignature MyMulticastDelegate;
+
+	UFUNCTION(BlueprintCallable, Category = UIFunc)
+		void ButtonClicked() {
+		UE_LOG(LogTemp, Warning, TEXT("UI Button Clicked"));
+	}
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI")
+		TAssetSubclassOf<class UUserWidget> Widget;
 	
 };
